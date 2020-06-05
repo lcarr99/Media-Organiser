@@ -1,0 +1,6 @@
+{
+    "require": {
+        "web-token/jwt-framework": "^2.1",
+        "miladrahimi/php-jwt": "^2.1"
+    }
+}

@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+   website:
+     image: php:7.2-apache
+     build: ./website
+     container_name: organised.com
+     volumes:
+        - ./website/src:/var/www/html/
+        - ./website/src/users:/var/www/html/users
+        - ./php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+     ports:
+        - 8080:80
+     links:
+     - db
+   db:
+      image: mysql:5.7
+      container_name: database
+      build:
+         context: ./db
+      ports:
+         - "3306:3306"
+      volumes: 
+         - ./db:/var/lib/mysql
+      environment: 
+         - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+         - MYSQL_DATABASE=synoptic_project
+      
+   
+  
